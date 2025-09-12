@@ -105,3 +105,11 @@ def task_1():
 # each year, total_admissions
 
 def task_2():
+    df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors = 'coerce')
+    df_bellevue.dropna(subset = ['date_in'], inplace = True)
+    df_bellevue['year'] = df_bellevue['date_in'].dt.year
+
+    entries_per_year = df_bellevue.groupby('year').size()
+    entries_per_yeardf = entries_per_year.reset_index(name = 'total admissions')
+
+    return(entries_per_yeardf)
