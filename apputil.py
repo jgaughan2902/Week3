@@ -1,5 +1,6 @@
 import seaborn as sns
 import pandas as pd
+import numpy as np
 
 # Exercise 1
 
@@ -55,3 +56,52 @@ def to_binary(n):
     # number in each step.
     else:
         return to_binary(n // 2) + str(n % 2)
+
+# Exercise 3
+
+url = 'https://github.com/melaniewalsh/Intro-Cultural-Analytics/raw/master/book/data/bellevue_almshouse_modified.csv'
+df_bellevue = pd.read_csv(url)
+
+# Part 1: 
+# Return a list of all column names, sorted such that
+# the first column has the least missing values, and the last
+# column has the most missing values.
+
+switch_to_NaN = df_bellevue['gender'].loc[~df_bellevue['gender'].isin(['m', 'w'])].unique()
+df_bellevue['gender'] = df_bellevue['gender'].replace(switch_to_NaN, np.nan)
+
+def task_1():
+    '''
+    Function to provide user with a list of columns
+    with amount of missing values in each column in
+    ascending order.
+
+    Parameters:
+    No input parameters
+
+    Return value:
+    A list containing all column names sorted in
+    ascending order based on how many missing
+    values they have.
+    '''
+    # Per instructions, anything in the 'gender' column that isn't
+    # a 'm' or 'w' is being treated as a missing value.
+    switch_to_NaN = df_bellevue['gender'].loc[~df_bellevue['gender'].isin(['m', 'w'])].unique()
+    df_bellevue['gender'] = df_bellevue['gender'].replace(switch_to_NaN, np.nan)
+
+    # Finding the amount of null values in each column and sorting
+    # the values and their respective column names into ascending
+    # order.
+    null_values = df_bellevue.isna().sum()
+    sorted = null_values.sort_values(ascending = True)
+
+    # Returning a sorted list of the column names only.
+    return list(sorted.index)
+
+# Part 2:
+# Return a data frame with two columns:
+# The year (for each year in the data), year
+# The total number of entries (immigrant admissions) for
+# each year, total_admissions
+
+def task_2():
