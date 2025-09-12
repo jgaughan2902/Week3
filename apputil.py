@@ -26,3 +26,32 @@ def fib(n):
         # Otherwise the function will perform recursion until
         # it returns the correct value.
         return fib(n-1) + fib(n-2)
+
+# Exercise 2
+
+def to_binary(n):
+    '''
+    Function to find binary representation
+    of the input n.
+
+    Parameters:
+    n (int): The integer you want converted
+    to binary.
+
+    Return value:
+    A string containing the binary
+    version of the input "n".
+    '''
+    # For these two special cases, the function will
+    # return n because the binary representation of
+    # 0 and 1 are themselves.
+    if n == 0:
+        return "0"
+    elif n == 1:
+        return "1"
+
+    # Otherwise, the function will perform recursion
+    # which builds up the string containing the binary
+    # number in each step.
+    else:
+        return to_binary(n // 2) + str(n % 2)
