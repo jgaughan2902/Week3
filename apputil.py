@@ -150,5 +150,24 @@ def task_3():
     # Get a series of the age of each group
     # and find the average of each group(gender).
     gender_series = grouped_gender['age'].mean()
-    
+
     return gender_series
+
+def task_4():
+    '''
+    Function to provide a list with the 5 most
+    common professions from most to least.
+
+    Parameters:
+    No input parameters
+
+    Return value:
+    A list containing the names of the 5 most
+    common professions by count in descending order.
+    '''
+    # Find the value counts of the profession column
+    profession_counts = df_bellevue['profession'].value_counts()
+
+    # Find the top 5 professions by count
+    profession_list = profession_counts.index.tolist()[1:6]
+    return profession_list
