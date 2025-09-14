@@ -4,7 +4,7 @@ import numpy as np
 
 # Exercise 1
 
-def fib(n):
+def fibonacci(n):
     '''
     Function to find the value of the nth
     element in the Fibonacci series.
@@ -26,7 +26,7 @@ def fib(n):
 
         # Otherwise the function will perform recursion until
         # it returns the correct value.
-        return fib(n-1) + fib(n-2)
+        return fibonacci(n-1) + fibonacci(n-2)
 
 # Exercise 2
 
