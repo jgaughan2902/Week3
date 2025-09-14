@@ -105,11 +105,50 @@ def task_1():
 # each year, total_admissions
 
 def task_2():
+    '''
+    Function to provide user with a data frame
+    containing the count of admissions for
+    each year
+
+    Parameters:
+    No input parameters
+
+    Return value:
+    A data frame containing the counts of
+    admissions for each year in the original
+    data frame.
+    '''
+    # Ensure the dates are in the right format and make sure
+    # anything that doesn't comply with the format is dropped.
     df_bellevue['date_in'] = pd.to_datetime(df_bellevue['date_in'], errors = 'coerce')
     df_bellevue.dropna(subset = ['date_in'], inplace = True)
+
+    # Extract the year from the 'date_in' column.
     df_bellevue['year'] = df_bellevue['date_in'].dt.year
 
+    # Group years together and count them up.
     entries_per_year = df_bellevue.groupby('year').size()
     entries_per_yeardf = entries_per_year.reset_index(name = 'total admissions')
 
     return(entries_per_yeardf)
+
+def task_3():
+    '''
+    Function to provide a series with the
+    average age for each gender.
+
+    Parameters:
+    No input parameters
+
+    Return value:
+    A series containing the average age for
+    both genders in the data frame.
+    '''
+    # Group the dataset by the gender variable.
+    grouped_gender = df_bellevue.groupby('gender')
+
+    # Get a series of the age of each group
+    # and find the average of each group(gender).
+    gender_series = grouped_gender['age'].mean()
+    
+    return gender_series
