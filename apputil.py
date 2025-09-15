@@ -84,21 +84,20 @@ def task_1():
     ascending order based on how many missing
     values they have.
     '''
-    # Per instructions, anything in the 'gender' column that isn't
-    # a 'm' or 'w' is being treated as a missing value.
+    # Create a variable containing only the gender column
+    # from the bellevue data frame.
     df_gender = df_bellevue['gender']
+
+    # Define what genders we consider valid in this case.
     valid_genders = ['m', 'w']
 
+    # Use the .where function to replace values in the 'gender'
+    # column that aren't 'm' or 'w' with missing values.
     df_bellevue['gender'] = df_gender.where(df_gender.isin(valid_genders), np.nan)
-    #switch_to_NaN = df_bellevue['gender'].loc[~df_bellevue['gender'].isin(['m', 'w'])].unique()
 
-    #switch_to_NaN = 
-
-    #df_bellevue['gender'] = df_bellevue['gender'].replace(switch_to_NaN, np.nan)
-
-    # Finding the amount of null values in each column and sorting
-    # the values and their respective column names into ascending
-    # order.
+    # Finding the amount of null values in each column in the bellevue
+    # data frame and sorting the values and their respective column names
+    # into ascending order.
     null_values = df_bellevue.isna().sum()
     sorted = null_values.sort_values(ascending = True)
 
