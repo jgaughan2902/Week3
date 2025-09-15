@@ -67,9 +67,6 @@ df_bellevue = pd.read_csv(url)
 # the first column has the least missing values, and the last
 # column has the most missing values.
 
-switch_to_NaN = df_bellevue['gender'].loc[~df_bellevue['gender'].isin(['m', 'w'])].unique()
-df_bellevue['gender'] = df_bellevue['gender'].replace(switch_to_NaN, np.nan)
-
 def task_1():
     '''
     Function to provide user with a list of columns
