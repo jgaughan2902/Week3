@@ -169,5 +169,5 @@ def task_4():
     profession_counts = df_bellevue['profession'].value_counts()
 
     # Find the top 5 professions by count
-    profession_list = profession_counts.index.tolist()[1:6]
+    profession_list = profession_counts.index.tolist()[:5]
     return profession_list
