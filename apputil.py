@@ -128,7 +128,7 @@ def task_2():
 
     # Group years together and count them up.
     entries_per_year = df_bellevue.groupby('year').size()
-    entries_per_yeardf = entries_per_year.reset_index(name = 'total admissions')
+    entries_per_yeardf = entries_per_year.reset_index(name = 'total_admissions')
 
     return(entries_per_yeardf)
 
