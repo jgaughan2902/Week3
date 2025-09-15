@@ -86,7 +86,7 @@ def task_1():
     '''
     # Per instructions, anything in the 'gender' column that isn't
     # a 'm' or 'w' is being treated as a missing value.
-    df_gender = df['gender']
+    df_gender = df_bellevue['gender']
     valid_genders = ['m', 'w']
 
     df_bellevue['gender'] = df_gender.where(df_gender.isin(valid_genders), np.nan)
